@@ -52,6 +52,21 @@ This project does just that.
     
     I am on fooooooooo:342456456
 
+## FAQ
+
+1. **How to use this in my project?**
+
+    It is up to you. You can copy the classes and freely modify it.
+    However, I would recommend to make this into a separated module,
+    as it will be easier if you need to shade some dependencies (notably
+    Guice and Guava).
+    
+2. **What if I have some other classes to be injected with Guice?**
+
+    Be aware that you can create an Injector from multiple Module:
+    
+        val injector = Guice.createInjector(new PropertyModule, new YourModule...)
+
 # References
 
 Inspired by [this](http://beust.com/weblog/2013/07/12/flexible-configuration-with-guice/), I wanted to re-make the whole project in Scala, but there are some limitation in the way Scala handle annotations, so I had to resorted back to Java.
