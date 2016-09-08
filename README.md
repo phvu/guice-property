@@ -13,8 +13,10 @@ This project does just that.
 
 1. Add your variables into the `Property` enum, as many as you want:
 
-        SERVER("MY_SERVER", "my.server", "localhost", "The server"),
-        PORT("", "my.port", "1234", "The port");
+    ```java
+    SERVER("MY_SERVER", "my.server", "localhost", "The server"),
+    PORT("", "my.port", "1234", "The port");
+    ```
     
     Basically this says the `Property.SERVER` property will be filled using:
     
@@ -26,31 +28,37 @@ This project does just that.
  
 2. Directly inject each variable into your class using the `@Prop` annotation:
 
-        import com.google.inject.Inject
-        import phvu.prop.{Prop, Property}
+    ```scala
+    import com.google.inject.Inject
+    import phvu.prop.{Prop, Property}
         
-        class PropertyUser @Inject()
-        (@Prop(Property.SERVER) val server: String, @Prop(Property.PORT) val port: Int) {
-        
-          def run() = {
-            println(s"I am on $server:$port")
-          }
-        }
+    class PropertyUser @Inject()
+    (@Prop(Property.SERVER) val server: String, @Prop(Property.PORT) val port: Int) {
+    
+      def run() = {
+        println(s"I am on $server:$port")
+      }
+    }
+    ```
     
     This is written in Scala, but using it in Java is very similar.
     
 3. Use Guice to create the injector:
 
-        Guice.createInjector(new PropertyModule).getInstance(classOf[PropertyUser]).run()
+    ```scala
+    Guice.createInjector(new PropertyModule).getInstance(classOf[PropertyUser]).run()
+    ```
     
     Don't worry about binding. Those are handled for you.
 
 ## How to test?
 
-    $ sbt clean compile package assembly
-    $ MY_SERVER="fooooooooo" java -Dmy.server="mystupidserver" -Dmy.port=342456456 -jar target/scala-2.11/guice-properties-assembly-1.0.jar
-    
-    I am on fooooooooo:342456456
+```bash
+$ sbt clean compile package assembly
+$ MY_SERVER="fooooooooo" java -Dmy.server="mystupidserver" -Dmy.port=342456456 -jar target/scala-2.11/guice-properties-assembly-1.0.jar
+
+I am on fooooooooo:342456456
+```
 
 ## FAQ
 
@@ -65,7 +73,9 @@ This project does just that.
 
     Be aware that you can create an Injector from multiple Module:
     
-        val injector = Guice.createInjector(new PropertyModule, new YourModule...)
+    ```scala
+    val injector = Guice.createInjector(new PropertyModule, new YourModule...)
+    ```
 
 # References
 
