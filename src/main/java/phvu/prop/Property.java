@@ -2,8 +2,8 @@ package phvu.prop;
 
 public enum Property {
 
-    FOO("FOO_SERVER", "foo.server", "DefaultFooServer", "Defines the foo server"),
-    PORT("", "foo.port", "1234", "The port");
+    SERVER("MY_SERVER", "my.server", "localhost", "The server"),
+    PORT("", "my.port", "1234", "The port");
 
     private String environmentVar;
     private String propertyKey;

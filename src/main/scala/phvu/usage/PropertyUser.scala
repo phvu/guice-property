@@ -18,9 +18,9 @@ import com.google.inject.Inject
 import phvu.prop.{Prop, Property}
 
 class PropertyUser @Inject()
-(@Prop(Property.FOO) val host: String, @Prop(Property.PORT) val port: Int) {
+(@Prop(Property.SERVER) val server: String, @Prop(Property.PORT) val port: Int) {
 
   def run() = {
-    println(s"I am on $host:$port")
+    println(s"I am on $server:$port")
   }
 }
