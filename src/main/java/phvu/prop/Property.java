@@ -17,8 +17,20 @@ public enum Property {
         this.defaultValue = defaultValue;
     }
 
+    public String getEnvironmentVar() {
+        return environmentVar;
+    }
+
+    public String getPropertyKey() {
+        return propertyKey;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public String getDefaultValue() {
+        return defaultValue;
     }
 
     public String getValue() {
